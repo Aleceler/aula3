@@ -1,11 +1,11 @@
 import './App.css'
-import RefSample from "./hooks/refSample";
+import {RouterProvider} from "react-router-dom";
+import routes from "./routes.tsx";
 
 function App() {
-
   return (
     <>
-      <RefSample />
+        <RouterProvider router={routes}/>
     </>
   )
 }
