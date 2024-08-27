@@ -1,29 +1,35 @@
-import React, {useLayoutEffect, useRef, useState} from "react";
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 
 const LayoutEffectSample = () => {
-    const [bgColor, setBgColor] = useState("lightblue");
-    const boxRef = useRef(null);
+    const [a,setA] = useState("")
+    const [b,setB] = useState("")
+
+
+    useEffect(() => {
+        console.log('useEffect: Executing after the browser has painted');
+        setTimeout(() => {
+            setA("Valor A")
+            console.log("a", performance.now())
+        })
+    }, []);
 
     useLayoutEffect(() => {
-        if (boxRef.current) {
-            const height = boxRef.current.offsetHeight;
-            setBgColor(height > 100 ? "lightgreen" : "lightcoral");
-        }
+        console.log('useLayoutEffect: Executing before the browser paints');
+        setTimeout(() => {
+            setB("Valor B")
+            console.log("b", performance.now())
+
+        })
     }, []);
+
 
     return (
         <div>
-            <div
-                ref={boxRef}
-                style={{
-                    height: "150px",
-                    backgroundColor: bgColor,
-                    margin: "20px 0",
-                }}
-            >
-                Height: {boxRef.current?.offsetHeight}px
-            </div>
+           Teste useLayoutEffect
+            <p>{a}</p>
+            <p>{b}</p>
         </div>
+
     );
 };
 

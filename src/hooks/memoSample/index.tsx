@@ -1,30 +1,27 @@
-import { useMemo, useState } from 'react';
-
- const initialItems = new Array(29_999_999).fill(0).map((_, i) => {
-    return {
-        id: i,
-        isSelected: i === 29_999_998,
-    };
-});
+import { useState } from 'react';
 
 const MemoSample = () =>  {
-    const [count, setCount] = useState(0);
-    const [items] = useState(initialItems);
+    const [num1, setNum1]: number = useState(1)
+    const [num2, setNum2]: number = useState(1)
+    const [num3, setNum3]: number = useState(1)
+    const [num4, setNum4]: number = useState(1)
 
-    const selectedItem =
-        // items.find((item) => item.isSelected)
-        useMemo(
-        () => items.find((item) => item.isSelected),
-        [count, items],
-    );
+    let potencia = (() => {
+        const future = Date.now() + 1000
+        while (Date.now() < future) {}
+        return num1 ** num2
+    })()
+
+    let soma = parseInt(num3) + parseInt(num4)
 
     return (
-        <div className='tutorial'>
-            <h1>Count: {count}</h1>
-            <h1>Selected Item: {selectedItem?.id}</h1>
-            <button onClick={() => setCount(count + 1)}>
-                Increment
-            </button>
+        <div>
+            <p>Potencia: {potencia}</p>
+            <input type="number" value={num1} onChange={(e) => setNum1(e.target.value)} placeholder="numero 1"/>
+            <input type="number" value={num2} onChange={(e) => setNum2(e.target.value)} placeholder="numero 2"/>
+            <p>Soma: {soma}</p>
+            <input type="number" value={num3} onChange={(e) => setNum3(e.target.value)} placeholder="numero 3"/>
+            <input type="number" value={num4} onChange={(e) => setNum4(e.target.value)}placeholder="numero 4"/>
         </div>
     );
 }

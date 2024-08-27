@@ -24,7 +24,7 @@ const CallbackSample = () => {
             );
             setUsers(filteredUsers);
         },
-        [],
+        [users],
     );
 
     return (

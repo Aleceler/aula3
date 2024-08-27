@@ -8,7 +8,6 @@ const StateSample = () => {
 
     const handleChanges = (e) => {
         const { name, value } = e.target;
-        console.log(name, value)
         setFormValues(prevValues => ({
             ...prevValues,
             [name]: value
