@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useMemo, useState} from 'react';
 
 const MemoSample = () =>  {
     const [num1, setNum1]: number = useState(1)
@@ -6,13 +6,15 @@ const MemoSample = () =>  {
     const [num3, setNum3]: number = useState(1)
     const [num4, setNum4]: number = useState(1)
 
-    let potencia = (() => {
+    let potencia = useMemo(() => {
         const future = Date.now() + 1000
         while (Date.now() < future) {}
+        console.log("calculei a potencia")
         return num1 ** num2
-    })()
+    }, [num1, num2])
 
     let soma = parseInt(num3) + parseInt(num4)
+    console.log("somei!")
 
     return (
         <div>

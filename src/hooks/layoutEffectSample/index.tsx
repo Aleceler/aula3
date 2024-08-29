@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import {useEffect, useLayoutEffect, useState} from 'react';
 
 const LayoutEffectSample = () => {
     const [a,setA] = useState("")
@@ -13,12 +13,12 @@ const LayoutEffectSample = () => {
         })
     }, []);
 
+
     useLayoutEffect(() => {
         console.log('useLayoutEffect: Executing before the browser paints');
         setTimeout(() => {
             setB("Valor B")
             console.log("b", performance.now())
-
         })
     }, []);
 
@@ -29,7 +29,6 @@ const LayoutEffectSample = () => {
             <p>{a}</p>
             <p>{b}</p>
         </div>
-
     );
 };
 
